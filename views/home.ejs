@@ -5,5 +5,12 @@
 
     <p><%= message %> </p>
 
+    <% for(var i =0; i<blogList.length; i++){ %>
+        <div class="item">
+            <h2><%= blogList[i].postTitle %></h2>
+            <p><%= blogList[i].post.substring(0,200) %></p>
+        </div>
+    <% } %>
+
 
 <%- include("partials/footer") %> 

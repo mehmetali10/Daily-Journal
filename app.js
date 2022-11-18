@@ -15,12 +15,13 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const blogs = [];
+
 
 
 app.get("/", (req, res) => {
-  res.render("home", {message: homeStartingContent});
+  res.render("home", {message: homeStartingContent, blogList: blogs});
 });
-
 
 app.get("/about", (req, res) => {
   res.render("about", {message : aboutContent});
@@ -28,6 +29,19 @@ app.get("/about", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact", {message : contactContent});
+});
+
+app.get("/compose", (req, res) => {
+  res.render("compose");
+});
+
+app.post("/compose", (req, res) => {
+  let blog = {
+    postTitle : req.body.postTitle,
+    post : req.body.post
+  }  
+  blogs.push(blog);
+  res.redirect("/");
 });
 
 
