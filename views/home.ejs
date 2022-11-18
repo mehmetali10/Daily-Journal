@@ -5,12 +5,10 @@
 
     <p><%= message %> </p>
 
-    <% for(var i =0; i<blogList.length; i++){ %>
-        <div class="item">
-            <h2><%= blogList[i].postTitle %></h2>
-            <p><%= blogList[i].post.substring(0,200) %></p>
-        </div>
-    <% } %>
+    <% blogList.forEach(function(blog) { %>
+        <h2><%= blog.postTitle %></h2>
+        <p><%= blog.post.substring(0,200) %>..... <a href="/blog/<%= blog.postTitle %> ">Read More</a></p>
+    <% });%>
 
 
 <%- include("partials/footer") %> 

@@ -45,6 +45,14 @@ app.post("/compose", (req, res) => {
 });
 
 
+app.get("/blog/:post", function(req, res) {
+  blogs.forEach(function(b){
+    if(b.postTitle === req.params.post)
+       p = b;
+  });
+  res.render("post", {post : p});
+});
+
 
 
 
