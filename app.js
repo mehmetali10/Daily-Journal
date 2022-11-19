@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -16,23 +15,25 @@ app.use(express.static("public"));
 
 const blogs = [];
 
-
-
 app.get("/", (req, res) => {
   res.render("home", {message: homeStartingContent, blogList: blogs});
 });
+
 
 app.get("/about", (req, res) => {
   res.render("about", {message : aboutContent});
 });
 
+
 app.get("/contact", (req, res) => {
   res.render("contact", {message : contactContent});
 });
 
+
 app.get("/compose", (req, res) => {
   res.render("compose");
 });
+
 
 app.post("/compose", (req, res) => {
   let blog = {
@@ -51,12 +52,6 @@ app.get("/blog/:post", function(req, res) {
   });
   res.render("post", {post : p});
 });
-
-
-
-
-
-
 
 
 app.listen(3000, function() {
