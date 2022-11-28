@@ -1,5 +1,3 @@
-//jshint esversion:6
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -18,20 +16,6 @@ app.use(express.static("public"));
 
 const blogs = [];
 
-mongoose.connect("mongodb://localhost:27017/blogDB");
-
-const blogSchema = {
-  title: String,
-  content: String
-};
-
-const Blog = mongoose.model("Blog", blogSchema);
-
-const representative = new Blog({
-  title: "User Guide",
-  content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis non neque debitis quod asperiores libero, consequuntur velit sit porro voluptate quam iste ratione natus eaque illo ex quae eos dolorum sequi blanditiis vero quas tempora ea laborum. Iste nulla porro debitis vero quidem sint, ipsa dolorum consequuntur incidunt, repudiandae eum sed quasi dignissimos itaque fugiat consequatur unde sunt fuga veritatis laudantium reprehenderit odio nisi. Aspernatur, unde dolorem quos, quidem earum quaerat provident impedit neque et corporis nemo cumque, suscipit ipsum est! Ipsa amet quasi tempore adipisci sapiente. Hic, numquam provident quaerat repellat, quidem temporibus impedit dicta corporis ad quis, id odio? Quidem hic distinctio assumenda quae inventore voluptates a, animi voluptatibus iste sunt odit suscipit, nemo et! Harum dignissimos eveniet cum illum dolores quod quisquam perferendis quibusdam dicta totam neque aspernatur, asperiores molestias deserunt, recusandae eum nesciunt ut quia qui labore iure laborum fugit, quo illo? Ad eveniet, dolores eum facere nostrum tenetur unde quia assumenda saepe fugiat corporis velit quisquam libero optio itaque, mollitia nobis vitae. Delectus beatae, exercitationem alias fugiat consequuntur et ullam culpa quod mollitia blanditiis nemo vel. Officiis iusto cupiditate, consequuntur, asperiores excepturi fuga nisi, consequatur itaque sapiente officia pariatur voluptas! Rerum, ipsa nemo. Sunt, repellat. "
-});
-
 
 
 app.get("/", (req, res) => {
@@ -48,17 +32,21 @@ app.get("/", (req, res) => {
   });
 });
 
+
 app.get("/about", (req, res) => {
   res.render("about", {message : aboutContent});
 });
+
 
 app.get("/contact", (req, res) => {
   res.render("contact", {message : contactContent});
 });
 
+
 app.get("/compose", (req, res) => {
   res.render("compose");
 });
+
 
 app.post("/compose", (req, res) => {
   const blog = new Blog({
@@ -78,12 +66,6 @@ app.get("/blog/:post", function(req, res) {
     res.render("post", p = foundBlog);
   });
 });
-
-
-
-
-
-
 
 
 app.listen(3000, function() {
