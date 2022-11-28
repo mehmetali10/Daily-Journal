@@ -6,9 +6,8 @@
     <p><%= message %> </p>
 
     <% blogList.forEach(function(blog) { %>
-        <h2><%= blog.postTitle %></h2>
-        <p><%= blog.post.substring(0,200) %>..... <a href="/blog/<%= blog.postTitle %> ">Read More</a></p>
+        <h2><%= blog.title %></h2>
+        <p><%= blog.content.substring(0,200) %>..... <a href="/blog/<%= blog._id %> ">Read More</a></p>
     <% });%>
-
 
 <%- include("partials/footer") %> 
